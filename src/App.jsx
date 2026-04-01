@@ -27,7 +27,7 @@ function App() {
 
                     <FocusControls />
                     <Suspense fallback={"Loading Env"}>
-                        <Environment preset="park" background={true}/>
+                        <Environment files="/hdri/rooitou_park_1k.hdr" background={true}/>
                     </Suspense>
                     <ambientLight intensity={1}/>
                     {/*<spotLight position={[10, 10, 10]} angle={0.15} penumbra={1}/>*/}
