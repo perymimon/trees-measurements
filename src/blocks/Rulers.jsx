@@ -4,7 +4,6 @@ import {useSnapshot} from "valtio";
 
 
 export function Rulers() {
-    console.log('rendering Rulers');
     const snap = useSnapshot(proxyState);
     const {board} = snap
     return <>

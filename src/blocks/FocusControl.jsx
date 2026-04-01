@@ -30,8 +30,6 @@ export function FocusControls({}) {
         }
 
         function on(){
-            console.log('enabling Focus control')
-
             const controls = controlsRef.current
             controls.target.copy(pCL)
             // controls.update();
@@ -65,7 +63,12 @@ export function FocusControls({}) {
 return <OrbitControls ref={controlsRef}
                       minPolarAngle={-Math.PI / 2}
                       enabled={enabledControls}
-                      maxPolarAngle={Math.PI / 1.7}/>
+                      maxPolarAngle={Math.PI / 1.7}
+                      enableDamping
+                      dampingFactor={0.08}
+                      rotateSpeed={0.6}
+                      zoomSpeed={0.8}
+                      panSpeed={0.8}/>
 }
 
 // useFrame((treeState, dt) => {

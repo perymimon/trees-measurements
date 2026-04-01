@@ -3,10 +3,8 @@ import '/src/myModification/controls.css'
 import Grounds from "./Grounds";
 import Markers from "../blocks/Marker";
 import Rulers from "./Rulers";
-import MiniMapSun from "./MiniMapSun";
 
 export function Groves() {
-    console.log('rendering Groves')
     return (
         <>
 

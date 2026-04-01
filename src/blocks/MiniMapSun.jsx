@@ -4,7 +4,6 @@ import {useSnapshot} from "valtio";
 
 
 export function MiniMapSun(){
-    console.log('rendering miniMap')
     const snap = useSnapshot(proxyState);
 
     return <Minimap

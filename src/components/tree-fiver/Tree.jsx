@@ -1,5 +1,5 @@
 import {memo, useDeferredValue, useEffect, useTransition} from "react";
-import {useGLTF, Text,Plane} from "@react-three/drei";
+import {useGLTF} from "@react-three/drei";
 import {domain2range, lerpKey} from "/src/helper/math";
 
 import {
@@ -38,7 +38,6 @@ const letCanvas = new LetMap((i) => {
 export const Trees = memo(TreesComponent)
 
 function TreesComponent(props) {
-    console.log('rendering trees')
     const snap = useSnapshot(state)
 
     return snap.dayInfo.datums.map((data, index) => {
@@ -100,14 +99,6 @@ function Tree({position, data}) {
 
     return (
         <group position={position} dispose={null}>
-            <Plane args={[.3, .5]} position={[-.3,.2,0]} rotation={[-.3,0,0]}>
-                <meshBasicMaterial color="purple"/>
-                <Text scale={2} position={[0,0.1,0.1]} >
-                    <meshBasicMaterial color="yellow"/>
-                    {data.index}
-                </Text>
-            </Plane>
-
             <mesh ref={bread}
                   geometry={nodes.tree.geometry}
                   material={materials.Wood}

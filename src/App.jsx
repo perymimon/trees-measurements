@@ -2,18 +2,20 @@ import React, {Suspense} from 'react'
 import './App.css'
 import './myModification/controls.css'
 
-import {Canvas} from '@react-three/fiber'
-import BoxModel from './components/3d-demo-Box'
+import {Canvas, useLoader} from '@react-three/fiber'
 import {Environment} from '@react-three/drei'
+import {RGBELoader} from 'three-stdlib'
 import Groves from "./blocks/Groves";
 import TableControl from "./blocks/TableControl";
 import Header from "./blocks/Header";
 import FocusControls from "./blocks/FocusControl";
 import MiniMapSun from "./blocks/MiniMapSun";
 
-function App() {
-    console.log('rendering App')
+// Kick off HDR load before the Canvas mounts — hits browser cache by the time
+// Environment suspends and requests the same URL.
+useLoader.preload(RGBELoader, '/hdri/rooitou_park_1k.hdr')
 
+function App() {
     return (
         <Suspense fallback={"Loading ..."}>
             <div className="App">
@@ -26,15 +28,11 @@ function App() {
                         linear={true}>
 
                     <FocusControls />
-                    <Suspense fallback={"Loading Env"}>
+                    <Suspense fallback={null}>
                         <Environment files="/hdri/rooitou_park_1k.hdr" background={true}/>
                     </Suspense>
                     <ambientLight intensity={1}/>
-                    {/*<spotLight position={[10, 10, 10]} angle={0.15} penumbra={1}/>*/}
-                    {/*<pointLight position={[-10, -10, -10]}/>*/}
-                    <BoxModel position={[-1.2, 0, 0]}/>
-                    <BoxModel position={[1.2, 0, 0]}/>
-                    <Suspense fallback={"Loading Model"}>
+                    <Suspense fallback={null}>
                         <Groves/>
                     </Suspense>
                 </Canvas>

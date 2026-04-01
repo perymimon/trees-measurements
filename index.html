@@ -3,8 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
-    <meta name="viewport" content="columns=device-columns, initial-scale=1.0" />
-    <title>Vite App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ampple — Tree Measurements</title>
+    <!-- Preload heavy 3D assets so they're in browser cache when Three.js requests them -->
+    <link rel="preload" href="/3d-models/treeModel-leafsMerge.glb" as="fetch" crossorigin>
+    <link rel="preload" href="/hdri/rooitou_park_1k.hdr" as="fetch" crossorigin>
   </head>
   <body>
     <div id="canvas-container"></div>
