@@ -4,26 +4,46 @@
     --wg: calc(var(--w) + var(--g));
     --scaleY: 1;
 
+    position: relative;
     display: flex;
     flex-direction: row;
     gap: var(--g);
-    width: 100VW;
+    width: 100vw;
     justify-content: center;
-    background-color: rgba(40, 44, 52, 0.2);
-    color: purple;
+    align-items: flex-end;
+    padding: 0.4rem 0;
+    background-color: var(--surface);
+    border-bottom: 1px solid var(--border);
+    color: var(--text-muted);
 }
 
 .minimap .page:after {
     display: block;
-    content: "🌞";
+    content: "🌳";
     font-size: var(--w);
+    filter: saturate(0.6);
+    transition: filter 0.3s ease;
 }
 
 .minimap .page {
-    font-size: 2em;
-    font-weight: bold;
+    font-size: 0.85em;
+    font-weight: 600;
+    color: var(--text-muted);
     transform: scale(var(--scaleY));
-    transition: transform 0.3s ease;
+    transform-origin: bottom center;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.2s;
+    cursor: pointer;
+}
+
+/* Active day — full color */
+.minimap .page[style*="--scaleY: 1"]:after,
+.minimap .page[style*="--scaleY:1"]:after {
+    filter: saturate(1.4) brightness(1.1);
+}
+
+.minimap .page[style*="--scaleY: 1"],
+.minimap .page[style*="--scaleY:1"] {
+    color: var(--leaf);
 }
 
 .drag-enter.minimap .page {
@@ -31,38 +51,58 @@
 }
 
 .drag-enter {
-    color: rgba(40, 44, 52, 0.4);
-    background-color: currentColor;
+    background-color: var(--amber-glow);
     border-radius: var(--wg);
-    border: 1px dashed currentColor;
+    border: 1px dashed var(--amber);
+    outline: 2px solid var(--amber-glow);
 }
 
 .drag-enter:before {
     position: absolute;
-    content: "drop here ";
-    font-size: var(--w);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    content: "Drop CSV files here";
+    font-size: 1.1rem;
+    color: var(--amber);
+    font-weight: 600;
+    white-space: nowrap;
+    pointer-events: none;
 }
 
-.files-pending{
-    display:flex;
+.files-pending {
+    display: flex;
     flex-direction: column;
-    border:1px dashed currentColor;
-    padding:0.2em;
+    border: 1px dashed var(--border);
+    border-radius: 4px;
+    padding: 0.3em 0.5em;
     text-align: left;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    background: var(--surface-2);
 }
-.files-pending.group-complete{
-    color: rgba(155, 160, 167, 0.9);
+
+.files-pending.group-complete {
+    border-color: var(--leaf);
+    color: var(--text);
 }
 
 .files-pending button {
     align-self: flex-end;
-    justify-self: flex-end;
-    position: relative;
-    margin: 0.3em auto;
-    font-size: 1.2rem;
-    color: rgba(155, 160, 167, 0.9);
-    background-color: rgba(164, 126, 167, 0.9);
-    border-radius: 0.2em;
+    margin: 0.3em 0 0;
+    padding: 0.2em 0.6em;
+    font-size: 0.85rem;
+    color: var(--bg);
+    background: var(--leaf);
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.15s;
+}
+
+.files-pending button:hover {
+    background: var(--amber);
 }
 /*}.minimap .page{*/
 /*    !*left: `${i * wg}em`,*!*/

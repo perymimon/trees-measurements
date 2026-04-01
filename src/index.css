@@ -1,3 +1,22 @@
+:root {
+  /* Orchard palette — mirrors 3D scene encoding */
+  --leaf:         oklch(62% 0.18 132);   /* leaf green: density, active, links */
+  --leaf-dim:     oklch(42% 0.14 132);   /* deep green: hover backgrounds */
+  --leaf-glow:    oklch(62% 0.18 132 / 0.15);
+  --water:        oklch(64% 0.13 252);   /* irrigation blue: watered values */
+  --water-dim:    oklch(44% 0.10 252);
+  --amber:        oklch(72% 0.15 68);    /* harvest amber: focus / selection */
+  --amber-glow:   oklch(72% 0.15 68 / 0.20);
+
+  --bg:           oklch(16% 0.014 222);  /* near-black, cool tint */
+  --surface:      oklch(21% 0.018 218);  /* component backgrounds */
+  --surface-2:    oklch(27% 0.022 212);  /* raised surfaces, hover */
+  --border:       oklch(33% 0.026 210);  /* subtle borders */
+
+  --text:         oklch(88% 0.008 100);  /* warm off-white */
+  --text-muted:   oklch(55% 0.012 200);  /* secondary / metadata */
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -6,6 +25,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100vh;
+  background: var(--bg);
+  color: var(--text);
 }
 
 code {

@@ -1,44 +1,60 @@
-.grid{
+.grid {
     display: grid;
-    padding:  2em 2em;
+    padding: 1.5em 1.5em;
     --grid-columns: 12;
     --grid-rows: 12;
     grid-template-columns: repeat(var(--grid-columns), 1fr);
     grid-template-rows: repeat(var(--grid-rows), 4em);
-    font-size: 0.7em;
+    font-size: 0.65em;
     font-family: monospace;
     gap: 0.2em;
+    background: var(--bg);
 }
 
-.grid > *{
+.grid > * {
     grid-column: span 1;
     grid-row: span 1;
-    color: #fff;
+    color: var(--text-muted);
+    background: var(--surface);
     text-align: left;
-    padding: 0.05em;
+    padding: 0.2em 0.3em;
     cursor: pointer;
-
+    border-radius: 2px;
+    border: 1px solid transparent;
+    transition: border-color 0.15s, background 0.15s;
+    line-height: 1.5;
 }
 
-.grid > *:is(*:hover, *.marked):not(header){
-    background-color: #fff;
-    color: gray;
+.grid > *:is(*:hover, *.marked):not(header) {
+    background: var(--surface-2);
+    color: var(--text);
     font-weight: bold;
     transform: scale(2);
-    outline: 1px solid gray;
+    z-index: 10;
+    border-color: var(--leaf);
+    outline: none;
 }
 
-.grid .focus{
-    background-color: #aaa;
-    color: green;
+.grid .focus {
+    background: var(--amber-glow);
+    border-color: var(--amber);
+    color: var(--text);
     font-weight: bold;
-    font-size: 1.1em;
-    box-shadow: 0 0 0.2em 0.2em #ccc;
+    box-shadow: 0 0 0 2px var(--amber-glow);
 }
 
-.grid > header{
+.grid > header {
     grid-column-start: 1;
     grid-column-end: -1;
     font-size: 1rem;
-    color:wheat
+    color: var(--leaf);
+    background: transparent;
+    border: none;
+    padding: 0.2em 0;
+    font-family: inherit;
 }
+
+/* Color-coded data values — mirrors 3D scene encoding */
+.val-top  { color: var(--leaf);  display: block; }
+.val-bot  { color: oklch(52% 0.14 135); display: block; }
+.val-water{ color: var(--water); display: block; }

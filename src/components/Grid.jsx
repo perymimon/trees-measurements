@@ -15,15 +15,15 @@ export function Grid(props) {
             <header>start: {dayStart} end: {dayEnd} rows: {rows} columns: {columns} weight: {weight}</header>
             {datums.map((cell, index) => {
                 let focusClass = focus === index ? "focus" : "";
+                const [top, bottom] = cell.densities;
                 return <div key={index}
                             onMouseOver={() => onMouseOver?.(index)}
                             onMouseOut={() => onMouseOut?.(index)}
                             onClick={() => onClick?.(index)}
                             className={`grid-cell ${focusClass}`}>
-                    t: {cell.top} <br/>
-                    b: {cell.bottom} <br/>
-                    w: {cell.watered} <br/>
-
+                    <span className="val-top">↑{top}</span>
+                    <span className="val-bot">↓{bottom}</span>
+                    <span className="val-water">~{cell.watered}</span>
                 </div>
             })}
         </div>

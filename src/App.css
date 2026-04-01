@@ -1,6 +1,6 @@
-#root{
+#root {
   height: 100vh;
-  background: black;
+  background: var(--bg);
 }
 
 .App {
@@ -11,16 +11,18 @@
   overflow: hidden;
 }
 
-@media screen  and (orientation: landscape) and (min-width:1081px) {
+@media screen and (orientation: landscape) and (min-width: 1081px) {
   .App {
     display: grid;
     grid-template-areas:
       "header header"
       "main-1 main-2"
       "footer footer";
-
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr auto;
   }
 }
+
 .App-logo {
   height: 5vmin;
   pointer-events: none;
@@ -29,56 +31,76 @@
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
+    filter: hue-rotate(60deg) saturate(1.4); /* tint React logo toward leaf green */
   }
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: var(--surface);
+  border-bottom: 1px solid var(--border);
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 0.75rem;
+  font-size: calc(10px + 1.2vmin);
+  color: var(--text);
   grid-area: header;
+  padding: 0.5rem 1rem;
+}
+
+.App-header p {
+  margin: 0;
+}
+
+.App-header .day-accent {
+  color: var(--leaf);
+  font-weight: 600;
 }
 
 .App-link {
-  color: #61dafb;
+  color: var(--leaf);
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 
 button {
-  font-size: calc(10px + 2vmin);
+  font-size: calc(10px + 1.5vmin);
 }
 
-a{
-  color: #61dafb;
+a {
+  color: var(--leaf);
+  text-decoration: none;
 }
 
-.tree-field{
+a:hover {
+  color: var(--amber);
+  text-decoration: underline;
+}
+
+.tree-field {
   height: 50rem !important;
   grid-area: main-1;
 }
-.grid-control{
+
+.grid-control {
   grid-area: main-2;
-  flex:1;
+  flex: 1;
   overflow: auto;
+  background: var(--bg);
 }
 
-.grid{
+.grid {
   align-self: center;
 }
 
-footer{
+footer {
   grid-area: footer;
-  color: white;
+  color: var(--text-muted);
+  padding: 0.5rem 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.8rem;
 }
