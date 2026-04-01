@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:github.com)",
+      "Bash(npm run build:*)",
+      "Bash(ls:*)",
+      "Bash(curl:*)",
+      "Bash(netstat:*)",
+      "Bash(xargs grep:*)",
+      "Bash(wmic process:*)",
+      "Bash(cmd:*)",
+      "Bash(powershell:*)",
+      "Bash(docker version:*)",
+      "Bash(docker run:*)",
+      "Bash(npm install:*)",
+      "Bash(*)",
+      "mcp__github__list_commits",
+      "mcp__github__get_commit",
+      "WebSearch",
+      "WebFetch(domain:productionresultssa8.blob.core.windows.net)"
+    ]
+  },
+  "enabledMcpjsonServers": [
+    "github"
+  ]
+}
