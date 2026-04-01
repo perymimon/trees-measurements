@@ -27,14 +27,14 @@ function App() {
                         camera={{fov: 30, position: [30, 10, 30]}}
                         linear={true}>
 
+                    {/* Solid sky color — visible on first frame, replaced by HDR once decoded */}
+                    <color attach="background" args={['#a8c8e8']}/>
                     <FocusControls />
                     <Suspense fallback={null}>
                         <Environment files="/hdri/rooitou_park_1k.hdr" background={true}/>
                     </Suspense>
                     <ambientLight intensity={1}/>
-                    <Suspense fallback={null}>
-                        <Groves/>
-                    </Suspense>
+                    <Groves/>
                 </Canvas>
                 <div className="grid-control">
                     <TableControl/>
